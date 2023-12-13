@@ -1,25 +1,21 @@
-const h1 = document.querySelector(".title");
-const input = document.querySelector(".input");
-const button = document.querySelector(".button");
-const ul = document.querySelector(".ul");
+const formGroup = document.querySelector("#form-group")
+const formGroupInput = document.querySelector("#input")
+const ul = document.querySelector("#ul");
 
 let Todo = []
 
 const handleAddlist = (e) => {
     e.preventDefault()
-    const inputValue = input.value;
-    console.log(inputValue);
-    input.value = "";
+    let inputValue = formGroupInput.value;
+    formGroupInput.value = "";
     const li = document.createElement("li");
-    ul.appendChild(li);
+    const span = document.createElement("span")
     li.innerText = inputValue;
-    li.classList.add(Date.now());
-    const id  = document.querySelector("#id");
+    ul.appendChild(li);
     Todo.push(inputValue);
-    console.log(Todo);
 }
 
-button.addEventListener("click", handleAddlist);
+formGroup.addEventListener("submit", handleAddlist);
 
 
 localStorage.setItem("key", `${Todo}`)

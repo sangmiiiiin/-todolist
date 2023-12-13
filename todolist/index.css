@@ -1,5 +1,11 @@
+html, body {
+    margin: 0;
+    padding: 0;
+}
+
 h1 {
     text-align: center;
+    color: white;
 }
 
 #form-group{
@@ -33,9 +39,10 @@ h1 {
 #container{
     margin-left: 30%;
     margin-right: 30%;
-    border: 1px solid black;
+    border: 1px solid white;
     height: 95vh;
 }
 li {
     margin-top: 5%;
+    color: white;
 }

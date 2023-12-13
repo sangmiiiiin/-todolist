@@ -4,19 +4,33 @@ const ul = document.querySelector("#ul");
 
 let Todo = []
 
-const handleAddlist = (e) => {
+const drawTodoList = (todo) => {
+    const li = document.createElement("li");
+    const span = document.createElement("span");
+    const button = document.createElement("button");
+    ul.appendChild(li);
+    li.appendChild(span);
+    span.innerText = todo;
+    li.appendChild(button);
+    button.innerText = "❌";
+    Todo.push(todo);
+}
+
+const handleSubmitTodo = (e) => {
     e.preventDefault()
     let inputValue = formGroupInput.value;
     formGroupInput.value = "";
-    const li = document.createElement("li");
-    const span = document.createElement("span")
-    li.innerText = inputValue;
-    ul.appendChild(li);
-    Todo.push(inputValue);
+    drawTodoList(inputValue);
 }
 
-formGroup.addEventListener("submit", handleAddlist);
+const todoDelete = () => {
+    
+}
+
+formGroup.addEventListener("submit", handleSubmitTodo);
 
 
-localStorage.setItem("key", `${Todo}`)
+
+
+
 

@@ -2,35 +2,51 @@ const formGroup = document.querySelector("#form-group")
 const formGroupInput = document.querySelector("#input")
 const ul = document.querySelector("#ul");
 
-let Todo = []
+const TODOS_KEY = "todos";
 
-const drawTodoList = (todo) => {
+let todos = []
+
+const saveToDos = () => {
+    localStorage.setItem(TODOS_KEY, JSON.stringify(todos));
+}
+
+const drawTodoList = (newToDo) => {
     const li = document.createElement("li");
     const span = document.createElement("span");
     const button = document.createElement("button");
     ul.appendChild(li);
     li.appendChild(span);
-    span.innerText = todo;
+    span.innerText = newToDo.text;
     li.appendChild(button);
     button.innerText = "❌";
-    Todo.push(todo);
+    button.addEventListener("click", deleteTodo);
 }
 
 const handleSubmitTodo = (e) => {
     e.preventDefault()
     let inputValue = formGroupInput.value;
     formGroupInput.value = "";
-    drawTodoList(inputValue);
+    const newTodoObj = {
+        id: Date.now(),
+        text: inputValue
+    }
+    todos.push(newTodoObj);
+    drawTodoList(newTodoObj);
+    saveToDos();
 }
 
-const todoDelete = () => {
-    
+const deleteTodo = (e) => {
+    const li = e.target.parentElement;
+    li.remove();
 }
 
 formGroup.addEventListener("submit", handleSubmitTodo);
 
+const savedTodos = localStorage.getItem(TODOS_KEY);
 
-
-
-
-
+if (savedTodos !== null) {
+    const parseTodos = JSON.parse(savedTodos);
+    todos = parseTodos;
+    parseTodos.forEach(drawTodoList);
+    
+}

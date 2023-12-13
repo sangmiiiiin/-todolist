@@ -14,6 +14,7 @@ const drawTodoList = (newToDo) => {
     const li = document.createElement("li");
     const span = document.createElement("span");
     const button = document.createElement("button");
+    li.id = newToDo.id;
     ul.appendChild(li);
     li.appendChild(span);
     span.innerText = newToDo.text;
@@ -38,6 +39,8 @@ const handleSubmitTodo = (e) => {
 const deleteTodo = (e) => {
     const li = e.target.parentElement;
     li.remove();
+    todos = todos.filter((todo) => todo.id !== parseInt(li.id));
+    saveToDos();
 }
 
 formGroup.addEventListener("submit", handleSubmitTodo);
@@ -48,5 +51,4 @@ if (savedTodos !== null) {
     const parseTodos = JSON.parse(savedTodos);
     todos = parseTodos;
     parseTodos.forEach(drawTodoList);
-    
 }

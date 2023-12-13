@@ -20,6 +20,7 @@ const drawTodoList = (newToDo) => {
     span.innerText = newToDo.text;
     li.appendChild(button);
     button.innerText = "❌";
+    button.classList = "deleteButton"
     button.addEventListener("click", deleteTodo);
 }
 

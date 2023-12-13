@@ -1,0 +1,41 @@
+h1 {
+    text-align: center;
+}
+
+#form-group{
+    border: 0px solid red;
+    display: flex;
+    justify-content: center;
+}
+
+#ul {
+    text-align: center;
+    list-style: none;
+}
+
+#form-group #input{
+    width: 30vw;
+    height: 5vh;
+    border-radius: 10px;
+}
+#input{
+    text-align: center;
+}
+#input::placeholder{
+    text-align: center;
+}
+
+.deleteButton {
+    background: none;
+    border: none;
+}
+
+#container{
+    margin-left: 30%;
+    margin-right: 30%;
+    border: 1px solid black;
+    height: 95vh;
+}
+li {
+    margin-top: 5%;
+}

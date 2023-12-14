@@ -3,7 +3,6 @@ const formContainer = document.querySelector("#form-group");
 const formInput = document.querySelector("#login-input");
 const button = document.querySelector("#login-button");
 const USERID_KEY = "userId"
-let userId = []
 
 const handleLogin = (e) => {
     e.preventDefault();
@@ -11,13 +10,8 @@ const handleLogin = (e) => {
     formInput.value = "";
     formContainer.classList.add("hide");
     userName.classList.remove("hide");
-    userId.push(inputValue);
-    saveUserId()
     paintId(inputValue)
-}
-
-const saveUserId = () => {
-    localStorage.setItem(USERID_KEY, JSON.stringify(userId));
+    localStorage.setItem("userId", inputValue);
 }
 
 const paintId = (Id) => {
@@ -42,8 +36,7 @@ if(savedId === null) {
 } else {
     formContainer.classList.add("hide");
     userName.classList.remove("hide");
-    const parsedId = JSON.parse(savedId);
-    paintId(parsedId)
+    paintId(savedId)
 }
 
 

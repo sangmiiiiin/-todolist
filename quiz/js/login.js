@@ -3,6 +3,7 @@ const formContainer = document.querySelector("#form-group");
 const formInput = document.querySelector("#login-input");
 const button = document.querySelector("#login-button");
 const USERID_KEY = "userId"
+const startButton = document.querySelector(".start-button");
 
 const handleLogin = (e) => {
     e.preventDefault();
@@ -12,10 +13,15 @@ const handleLogin = (e) => {
     userName.classList.remove("hide");
     paintId(inputValue)
     localStorage.setItem("userId", inputValue);
+    const createButton = document.createElement("button");
+    document.body.append(createButton);
+    createButton.innerText = "시작하기";
+    createButton.addEventListener("click", paintQuiz);
+    createButton.classList.add("start-button");
 }
 
 const paintId = (Id) => {
-    userName.innerText = `${Id} 님 환영합니다!`;
+    userName.innerText = `${Id}님 환영합니다!`;
     const logOutButton = document.createElement("button");
     userName.append(logOutButton);
     logOutButton.innerText = "로그아웃 하기";
@@ -26,6 +32,7 @@ const deleteId = () => {
     localStorage.clear();
     userName.classList.add("hide");
     formContainer.classList.remove("hide");
+    startButton.remove();
 }
 
 const savedId = localStorage.getItem(USERID_KEY);

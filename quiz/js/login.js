@@ -1,9 +1,9 @@
 const userName = document.querySelector("#user-name");
 const formContainer = document.querySelector("#form-group");
 const formInput = document.querySelector("#login-input");
-const button = document.querySelector("#login-button");
 const USERID_KEY = "userId"
 const startButton = document.querySelector("#start-button");
+const quizProblem = document.querySelector("#quiz");
 
 const handleLogin = (e) => {
     e.preventDefault();
@@ -28,7 +28,9 @@ const deleteId = () => {
     localStorage.clear();
     userName.classList.add("hide");
     formContainer.classList.remove("hide");
-    startButton.remove();
+    startButton.classList.add("hide");
+    quizProblem.classList.add("hide");
+
 }
 
 const savedId = localStorage.getItem(USERID_KEY);

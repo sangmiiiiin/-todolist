@@ -22,6 +22,7 @@ const paintId = (Id) => {
     const logOutButton = document.createElement("button");
     userName.append(logOutButton);
     logOutButton.innerText = "로그아웃 하기";
+    logOutButton.classList.add("logOut")
     logOutButton.addEventListener("click", deleteId);
 }
 

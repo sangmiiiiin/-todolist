@@ -1,19 +1,24 @@
 let quiz = [
     {
         id: 1,
-        problem: "용준이는 병신이다",
+        problem: "나는 지으링을 좋아한다",
         solve: "O"
     },
     {
         id: 2,
-        problem: "사실 잘생겼다",
+        problem: "나는 지은이를 사랑한다",
         solve: "O"
     },
     {
         id: 3,
-        problem: "코딩을 잘한다",
-        solve: "X"
+        problem: "지은이는 예쁘다",
+        solve: "O"
     },
+    {
+        id: 4,
+        problem: "상미링은 바보다",
+        solve: "X"
+    }
     // {
     //     id: 4,
     //     problem: "나는 지은이를 싫어한다",

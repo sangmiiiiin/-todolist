@@ -1,3 +1,54 @@
+html, body {
+    margin: 0;
+    padding: 0;
+}
+
 .hide {
     display: none;
+}
+
+h1 {
+    text-align: center;
+    margin-top: 22vh;
+}
+
+#user-name{
+    text-align: center;
+}
+
+#form-group {
+    margin-top: 5vh;
+    text-align: center;
+}
+
+#start-button-container {
+    text-align: center;
+    margin-top: 5%;
+}
+
+#quiz-container {
+    text-align: center;
+}
+
+#button-container {
+    text-align: center;
+    margin-top: 5vh;
+}
+
+.logOut {
+    margin-left: 5vw;
+}
+
+#start-button {
+    width: 40%;
+    height: 4vh;
+}
+
+.O {
+    width: 20vw;
+}
+
+.X {
+    width: 20vw;
+    margin-left: 5vw;
 }

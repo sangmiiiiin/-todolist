@@ -9,7 +9,7 @@ html, body {
 
 h1 {
     text-align: center;
-    margin-top: 22vh;
+    margin-top: 15vh;
 }
 
 #user-name{
@@ -40,15 +40,45 @@ h1 {
 }
 
 #start-button {
-    width: 40%;
-    height: 4vh;
+    width: 25%;
+    height: 5vh;
 }
 
 .O {
-    width: 20vw;
+    width: 12vw;
 }
 
 .X {
-    width: 20vw;
-    margin-left: 5vw;
+    width: 12vw;
+    margin-left: 3vw;
 }
+
+#image {
+    display: flex;
+    justify-content: center;
+}
+.jieurring{
+    width: 35%;
+    height: 70vh;
+    margin-bottom: 15vh;
+}
+
+footer{
+    position: fixed;
+    bottom: 0;
+    text-align: center;
+    width: 100%;
+    background-color: #333;
+    color: white;
+    height: 10vh;
+    line-height: 10vh;
+}
+
+@media screen and (max-width: 576px) {
+    .jieurring{
+        width: 80%;
+        height: 50vh;
+    }
+}
+
+

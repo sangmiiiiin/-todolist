@@ -32,6 +32,7 @@ const deleteId = () => {
     startButton.classList.add("hide");
     quizProblem.classList.add("hide");
     OX_Button.classList.add("hide");
+    document.querySelector(".jieurring").classList.add("hide");
     localStorage.clear();
 }
 

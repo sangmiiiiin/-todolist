@@ -61,6 +61,7 @@ const handleO = () => {
         } else {
             const finish = document.querySelector(".quiz");
             finish.innerText = "준비된 문제를 모두 풀었습니다!";
+            paintImage();
             const O_Button = document.querySelector(".O");
             const X_Button = document.querySelector(".X");
             O_Button.remove();
@@ -80,6 +81,7 @@ const handleX = () => {
         if (quizNumber >= quiz.length - 1) {
             const finish = document.querySelector(".quiz");
             finish.innerText = "준비된 문제를 모두 풀었습니다!";
+            paintImage();
             const O_Button = document.querySelector(".O");
             const X_Button = document.querySelector(".X");
             O_Button.classList.add("hide");

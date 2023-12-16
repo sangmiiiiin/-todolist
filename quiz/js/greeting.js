@@ -18,9 +18,5 @@ const paintQuiz = () => {
 }
 
 if (login !== null) {
-    const startButton = document.createElement("button");
-    document.body.append(startButton);
-    startButton.innerText = "시작하기";
     startButton.addEventListener("click", paintQuiz);
-    startButton.classList.add("start-button");
 }

@@ -3,7 +3,7 @@ const formContainer = document.querySelector("#form-group");
 const formInput = document.querySelector("#login-input");
 const button = document.querySelector("#login-button");
 const USERID_KEY = "userId"
-const startButton = document.querySelector(".start-button");
+const startButton = document.querySelector("#start-button");
 
 const handleLogin = (e) => {
     e.preventDefault();
@@ -11,13 +11,9 @@ const handleLogin = (e) => {
     formInput.value = "";
     formContainer.classList.add("hide");
     userName.classList.remove("hide");
+    startButton.classList.remove("hide");
     paintId(inputValue)
     localStorage.setItem("userId", inputValue);
-    const createButton = document.createElement("button");
-    document.body.append(createButton);
-    createButton.innerText = "시작하기";
-    createButton.addEventListener("click", paintQuiz);
-    createButton.classList.add("start-button");
 }
 
 const paintId = (Id) => {
@@ -43,6 +39,7 @@ if(savedId === null) {
 } else {
     formContainer.classList.add("hide");
     userName.classList.remove("hide");
+    startButton.classList.remove("hide");
     paintId(savedId)
 }
 

@@ -3,7 +3,8 @@ const formContainer = document.querySelector("#form-group");
 const formInput = document.querySelector("#login-input");
 const USERID_KEY = "userId"
 const startButton = document.querySelector("#start-button");
-const quizProblem = document.querySelector("#quiz");
+const quizProblem = document.querySelector("#quiz-container");
+const OX_Button = document.querySelector("#button-container");
 
 const handleLogin = (e) => {
     e.preventDefault();
@@ -25,12 +26,12 @@ const paintId = (Id) => {
 }
 
 const deleteId = () => {
-    localStorage.clear();
     userName.classList.add("hide");
     formContainer.classList.remove("hide");
     startButton.classList.add("hide");
     quizProblem.classList.add("hide");
-
+    OX_Button.classList.add("hide");
+    localStorage.clear();
 }
 
 const savedId = localStorage.getItem(USERID_KEY);

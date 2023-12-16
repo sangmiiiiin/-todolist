@@ -1,18 +1,18 @@
 let quiz = [
     {
         id: 1,
-        problem: "나는 지으링을 사랑한다",
+        problem: "용준이는 병신이다",
         solve: "O"
     },
     {
         id: 2,
-        problem: "지으링은 예쁘다",
+        problem: "사실 잘생겼다",
         solve: "O"
     },
     {
         id: 3,
-        problem: "나는 지은이를 좋아한다",
-        solve: "O"
+        problem: "코딩을 잘한다",
+        solve: "X"
     },
     // {
     //     id: 4,
@@ -24,15 +24,17 @@ let quizNumber = 0;
 
 const paintQuiz = () => {
     startButton.classList.add("hide");
+    quizProblem.classList.remove("hide");
+    OX_Button.classList.remove("hide");
     const quizDiv = document.createElement("div");
-    quizDiv.id = "quiz"
-    document.body.appendChild(quizDiv);
+    quizDiv.classList = "quiz"
+    quizProblem.appendChild(quizDiv);
     quizDiv.innerText = quiz[0].problem;
 
     const quizO = document.createElement("button");
     const quizX = document.createElement("button");
-    document.body.appendChild(quizO);
-    document.body.appendChild(quizX);
+    OX_Button.appendChild(quizO);
+    OX_Button.appendChild(quizX);
     quizO.classList.add("O");
     quizX.classList.add("X");
     quizO.innerText = "⭕️";
@@ -44,7 +46,7 @@ const paintQuiz = () => {
 
 const handleO = () => {
     const selectAnswerO = document.querySelector(".O");
-    const nextQuiz = document.querySelector("#quiz");
+    const nextQuiz = document.querySelector(".quiz");
     if (quiz[quizNumber].solve === selectAnswerO.className) {
         alert("정답! ⭕️");
         quizNumber++;
@@ -52,7 +54,7 @@ const handleO = () => {
         if (quizNumber < quiz.length) {
             nextQuiz.innerText = quiz[quizNumber].problem;
         } else {
-            const finish = document.querySelector("#quiz");
+            const finish = document.querySelector(".quiz");
             finish.innerText = "준비된 문제를 모두 풀었습니다!";
             const O_Button = document.querySelector(".O");
             const X_Button = document.querySelector(".X");
@@ -71,7 +73,7 @@ const handleX = () => {
         alert("정답! ⭕️");
 
         if (quizNumber >= quiz.length - 1) {
-            const finish = document.querySelector("#quiz");
+            const finish = document.querySelector(".quiz");
             finish.innerText = "준비된 문제를 모두 풀었습니다!";
             const O_Button = document.querySelector(".O");
             const X_Button = document.querySelector(".X");
@@ -79,16 +81,12 @@ const handleX = () => {
             X_Button.classList.add("hide");
         } else {
             quizNumber++;
-            const nextQuiz = document.querySelector("#quiz");
+            const nextQuiz = document.querySelector(".quiz");
             nextQuiz.innerText = quiz[quizNumber].problem;
         }
     } else {
         alert("틀렸어요! ❌");
     }
-}
-
-if (quizNumber > 4) {
-    
 }
 
 

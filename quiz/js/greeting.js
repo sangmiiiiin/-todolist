@@ -1,31 +1,40 @@
 let quiz = [
     {
-        id: 1,
+        id: 0,
         problem: "나는 지으링을 좋아한다",
         solve: "O"
     },
     {
-        id: 2,
+        id: 1,
         problem: "나는 지은이를 사랑한다",
         solve: "O"
     },
     {
-        id: 3,
+        id: 2,
         problem: "지은이는 예쁘다",
         solve: "O"
     },
     {
-        id: 4,
+        id: 3,
         problem: "상미링은 바보다",
         solve: "X"
+    },
+    {
+        id: 4,
+        problem: "지은이의 생일은?",
+        solve: "0523"
     }
-    // {
-    //     id: 4,
-    //     problem: "나는 지은이를 싫어한다",
-    //     solve: "X"
-    // }
 ];
 let quizNumber = 0;
+
+const paintAnswer = () => {
+    if(quizNumber === 3) {
+        OX_Button.classList.add("hide");
+        const AnswerInput = document.createElement("input");
+        quizProblem.appendChild(AnswerInput);
+    }
+
+}
 
 const paintQuiz = () => {
     startButton.classList.add("hide");
@@ -35,7 +44,6 @@ const paintQuiz = () => {
     quizDiv.classList = "quiz"
     quizProblem.appendChild(quizDiv);
     quizDiv.innerText = quiz[0].problem;
-
     const quizO = document.createElement("button");
     const quizX = document.createElement("button");
     OX_Button.appendChild(quizO);
@@ -50,6 +58,7 @@ const paintQuiz = () => {
 };
 
 const handleO = () => {
+    paintAnswer();
     const selectAnswerO = document.querySelector(".O");
     const nextQuiz = document.querySelector(".quiz");
     if (quiz[quizNumber].solve === selectAnswerO.className) {
@@ -74,6 +83,7 @@ const handleO = () => {
 }
 
 const handleX = () => {
+    paintAnswer();
     const selectAnswerX = document.querySelector(".X");
     if (quiz[quizNumber].solve === selectAnswerX.className) {
         alert("정답! ⭕️");
@@ -88,6 +98,7 @@ const handleX = () => {
             X_Button.classList.add("hide");
         } else {
             quizNumber++;
+            console.log(quizNumber);
             const nextQuiz = document.querySelector(".quiz");
             nextQuiz.innerText = quiz[quizNumber].problem;
         }

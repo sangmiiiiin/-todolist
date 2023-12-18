@@ -26,8 +26,10 @@ let quiz = [
     }
 ];
 let quizNumber = 0;
+
 const SOLVE_KEY = "정답! ⭕️";
 const NOT_SOLVE_KEY = "틀렸어요! ❌";
+
 
 
 const paintInput = () => {
@@ -49,6 +51,8 @@ const AnswerSubmit = (e) => {
         if (quizNumber > quiz.length - 1) {
             Input.classList.add("hide");
             finishQuiz();
+        } else {
+
         }
     } else {
         alert(NOT_SOLVE_KEY);
@@ -91,8 +95,7 @@ const AnswerSubmit = (e) => {
         const nextQuiz = document.querySelector(".quiz");
         if (quiz[quizNumber].solve === selectAnswerO.className) {
             alert(SOLVE_KEY);
-            ++quizNumber;
-            console.log(quizNumber)
+            quizNumber++;
             if (quizNumber < quiz.length) {
                 nextQuiz.innerText = quiz[quizNumber].problem;
                 if (quizNumber === 4) {
@@ -112,15 +115,8 @@ const AnswerSubmit = (e) => {
         if (quiz[quizNumber].solve === selectAnswerX.className) {
             alert(SOLVE_KEY);
             quizNumber++;
-            console.log(quizNumber);
             if (quizNumber > quiz.length - 1) {
-                const finish = document.querySelector(".quiz");
-                finish.innerText = "준비된 문제를 모두 풀었습니다!";
-                paintImage();
-                const O_Button = document.querySelector(".O");
-                const X_Button = document.querySelector(".X");
-                O_Button.classList.add("hide");
-                X_Button.classList.add("hide");
+                finishQuiz();
             } else {
                 const nextQuiz = document.querySelector(".quiz");
                 nextQuiz.innerText = quiz[quizNumber].problem;

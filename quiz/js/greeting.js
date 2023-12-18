@@ -22,93 +22,121 @@ let quiz = [
     {
         id: 4,
         problem: "지은이의 생일은?",
-        solve: "0523"
+        solve: "0514"
     }
 ];
 let quizNumber = 0;
+const SOLVE_KEY = "정답! ⭕️";
+const NOT_SOLVE_KEY = "틀렸어요! ❌";
 
-const paintAnswer = () => {
-    if(quizNumber === 3) {
-        OX_Button.classList.add("hide");
-        const AnswerInput = document.createElement("input");
-        quizProblem.appendChild(AnswerInput);
-    }
 
+const paintInput = () => {
+    const InputContainer = document.createElement("form");
+    const AnswerInput = document.createElement("input");
+    AnswerInput.classList.add("answer");
+    quizProblem.appendChild(InputContainer);
+    InputContainer.appendChild(AnswerInput);
+    InputContainer.addEventListener("submit", AnswerSubmit);
 }
 
-const paintQuiz = () => {
-    startButton.classList.add("hide");
-    quizProblem.classList.remove("hide");
-    OX_Button.classList.remove("hide");
-    const quizDiv = document.createElement("div");
-    quizDiv.classList = "quiz"
-    quizProblem.appendChild(quizDiv);
-    quizDiv.innerText = quiz[0].problem;
-    const quizO = document.createElement("button");
-    const quizX = document.createElement("button");
-    OX_Button.appendChild(quizO);
-    OX_Button.appendChild(quizX);
-    quizO.classList.add("O");
-    quizX.classList.add("X");
-    quizO.innerText = "⭕️";
-    quizX.innerText = "❌";
-
-    quizO.addEventListener("click", handleO);
-    quizX.addEventListener("click", handleX);
-};
-
-const handleO = () => {
-    paintAnswer();
-    const selectAnswerO = document.querySelector(".O");
-    const nextQuiz = document.querySelector(".quiz");
-    if (quiz[quizNumber].solve === selectAnswerO.className) {
-        alert("정답! ⭕️");
+const AnswerSubmit = (e) => {
+    e.preventDefault();
+    const Input = document.querySelector(".answer");
+    if (Input.value === quiz[quizNumber].solve) {
+        alert(SOLVE_KEY);
         quizNumber++;
         console.log(quizNumber);
-        if (quizNumber < quiz.length) {
-            nextQuiz.innerText = quiz[quizNumber].problem;
-        } else {
-            const finish = document.querySelector(".quiz");
-            finish.innerText = "준비된 문제를 모두 풀었습니다!";
-            paintImage();
-            const O_Button = document.querySelector(".O");
-            const X_Button = document.querySelector(".X");
-            O_Button.remove();
-            X_Button.remove();
+        if (quizNumber > quiz.length - 1) {
+            Input.classList.add("hide");
+            finishQuiz();
         }
-        
     } else {
-        alert("틀렸어요! ❌")
+        alert(NOT_SOLVE_KEY);
+        Input.value = "";
     }
 }
 
-const handleX = () => {
-    paintAnswer();
-    const selectAnswerX = document.querySelector(".X");
-    if (quiz[quizNumber].solve === selectAnswerX.className) {
-        alert("정답! ⭕️");
+    const finishQuiz = () => {
+        const finish = document.querySelector(".quiz");
+        finish.innerText = "준비된 문제를 모두 풀었습니다!";
+        paintImage();
+        const O_Button = document.querySelector(".O");
+        const X_Button = document.querySelector(".X");
+        O_Button.remove();
+        X_Button.remove();
+    }
 
-        if (quizNumber >= quiz.length - 1) {
-            const finish = document.querySelector(".quiz");
-            finish.innerText = "준비된 문제를 모두 풀었습니다!";
-            paintImage();
-            const O_Button = document.querySelector(".O");
-            const X_Button = document.querySelector(".X");
-            O_Button.classList.add("hide");
-            X_Button.classList.add("hide");
+    const paintQuiz = () => {
+        startButton.classList.add("hide");
+        quizProblem.classList.remove("hide");
+        OX_Button.classList.remove("hide");
+        const quizDiv = document.createElement("div");
+        quizDiv.classList = "quiz"
+        quizProblem.appendChild(quizDiv);
+        quizDiv.innerText = quiz[0].problem;
+        const quizO = document.createElement("button");
+        const quizX = document.createElement("button");
+        OX_Button.appendChild(quizO);
+        OX_Button.appendChild(quizX);
+        quizO.classList.add("O");
+        quizX.classList.add("X");
+        quizO.innerText = "⭕️";
+        quizX.innerText = "❌";
+        quizO.addEventListener("click", handleO);
+        quizX.addEventListener("click", handleX);
+    };
+
+    const handleO = () => {
+        const selectAnswerO = document.querySelector(".O");
+        const nextQuiz = document.querySelector(".quiz");
+        if (quiz[quizNumber].solve === selectAnswerO.className) {
+            alert(SOLVE_KEY);
+            ++quizNumber;
+            console.log(quizNumber)
+            if (quizNumber < quiz.length) {
+                nextQuiz.innerText = quiz[quizNumber].problem;
+                if (quizNumber === 4) {
+                    OX_Button.classList.add("hide");
+                }
+            } else {
+                finishQuiz()
+            }
+
         } else {
+            alert(NOT_SOLVE_KEY);
+        }
+    }
+
+    const handleX = () => {
+        const selectAnswerX = document.querySelector(".X");
+        if (quiz[quizNumber].solve === selectAnswerX.className) {
+            alert(SOLVE_KEY);
             quizNumber++;
             console.log(quizNumber);
-            const nextQuiz = document.querySelector(".quiz");
-            nextQuiz.innerText = quiz[quizNumber].problem;
+            if (quizNumber > quiz.length - 1) {
+                const finish = document.querySelector(".quiz");
+                finish.innerText = "준비된 문제를 모두 풀었습니다!";
+                paintImage();
+                const O_Button = document.querySelector(".O");
+                const X_Button = document.querySelector(".X");
+                O_Button.classList.add("hide");
+                X_Button.classList.add("hide");
+            } else {
+                const nextQuiz = document.querySelector(".quiz");
+                nextQuiz.innerText = quiz[quizNumber].problem;
+                if (quizNumber === 4) {
+                    OX_Button.classList.add("hide");
+                    paintInput();
+                }
+            }
+        } else {
+            alert(NOT_SOLVE_KEY);
         }
-    } else {
-        alert("틀렸어요! ❌");
     }
-}
 
 
-startButton.addEventListener("click", paintQuiz);
+
+    startButton.addEventListener("click", paintQuiz);
 
 
 

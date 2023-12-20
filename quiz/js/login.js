@@ -1,10 +1,11 @@
 const userNameContainer = document.querySelector("#user-name");
 const formContainer = document.querySelector("#form-group");
 const formInput = document.querySelector("#login-input");
-const USERID_KEY = "userId"
 const startButton = document.querySelector("#start-button");
 const quizProblem = document.querySelector("#quiz-container");
 const OX_Button = document.querySelector("#button-container");
+
+const USERID_KEY = "userId"
 
 const handleLogin = (e) => {
     e.preventDefault();
@@ -38,7 +39,10 @@ const deleteId = () => {
     if (document.querySelector(".jieurring") !== null) {
         document.querySelector(".jieurring").classList.add("hide");
     }
-    
+    const userName = document.querySelector("#user-id");
+    const logOutButton = document.querySelector(".logOut");
+    userName.classList.add("hide");
+    logOutButton.classList.add("hide");
     localStorage.clear();
 }
 

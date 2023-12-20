@@ -1,4 +1,4 @@
-const userName = document.querySelector("#user-name");
+const userNameContainer = document.querySelector("#user-name");
 const formContainer = document.querySelector("#form-group");
 const formInput = document.querySelector("#login-input");
 const USERID_KEY = "userId"
@@ -11,28 +11,34 @@ const handleLogin = (e) => {
     let inputValue = formInput.value;
     formInput.value = "";
     formContainer.classList.add("hide");
-    userName.classList.remove("hide");
+    userNameContainer.classList.remove("hide");
     startButton.classList.remove("hide");
     paintId(inputValue)
     localStorage.setItem("userId", inputValue);
 }
 
 const paintId = (Id) => {
-    userName.innerText = `${Id}님 환영합니다!`;
+    const userName = document.createElement("div");
     const logOutButton = document.createElement("button");
-    userName.append(logOutButton);
-    logOutButton.innerText = "로그아웃 하기";
+    userNameContainer.appendChild(userName);
+    userName.innerText = `${Id}님 환영합니다!`;
+    userName.id = "user-id";
+    userNameContainer.appendChild(logOutButton);
+    logOutButton.innerText = "로그아웃";
     logOutButton.classList.add("logOut")
     logOutButton.addEventListener("click", deleteId);
 }
 
 const deleteId = () => {
-    userName.classList.add("hide");
+    userNameContainer.classList.add("hide");
     formContainer.classList.remove("hide");
     startButton.classList.add("hide");
     quizProblem.classList.add("hide");
     OX_Button.classList.add("hide");
-    document.querySelector(".jieurring").classList.add("hide");
+    if (document.querySelector(".jieurring") !== null) {
+        document.querySelector(".jieurring").classList.add("hide");
+    }
+    
     localStorage.clear();
 }
 
@@ -43,7 +49,7 @@ if(savedId === null) {
     formContainer.addEventListener("submit", handleLogin);
 } else {
     formContainer.classList.add("hide");
-    userName.classList.remove("hide");
+    userNameContainer.classList.remove("hide");
     startButton.classList.remove("hide");
     paintId(savedId)
 }

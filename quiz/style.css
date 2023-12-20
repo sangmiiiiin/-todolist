@@ -1,3 +1,7 @@
+@import url('https://fonts.googleapis.com/css2?family=Nanum+Pen+Script&family=Noto+Sans+KR&display=swap');
+
+
+
 html, body {
     margin: 0;
     padding: 0;
@@ -10,17 +14,38 @@ html, body {
 h1 {
     text-align: center;
     margin-top: 15vh;
+    font-size: 3rem;
 }
 
 #user-name{
     text-align: center;
+    font-family: 'Noto Sans KR', sans-serif;
+    display: flex;
+    justify-content: center;
 }
 
+#user-id {
+    font-size: 1.5rem;
+}
 #form-group {
     margin-top: 5vh;
     text-align: center;
 }
-
+#login-input{
+    border-radius: 10px;
+    text-align: center;
+}
+input::placeholder {
+    text-align: center;
+    line-height: inherit;
+}
+#login-button {
+    background-color: #1976E2;
+    color: white;
+    border: 0px;
+    border-radius: 5px;
+    font-size: large;
+}
 #start-button-container {
     text-align: center;
     margin-top: 5%;
@@ -36,21 +61,42 @@ h1 {
 }
 
 .logOut {
-    margin-left: 5vw;
+    margin-left: 3vw;
+    background-color: #BDBDBD;
+    color: black;
+    border: 0px;
+    border-radius: 5px;
+    font-size: large;
+    font-family: 'Noto Sans KR', sans-serif;
 }
 
 #start-button {
     width: 25%;
     height: 5vh;
+    background-color: #1976E2;
+    color: white;
+    border: 0px;
+    border-radius: 5px;
+    font-size: large;
 }
 
 .O {
     width: 12vw;
+    background-color: #E0E0E0;
+    color: white;
+    border: 0px;
+    border-radius: 5px;
+    font-size: large;
 }
 
 .X {
     width: 12vw;
     margin-left: 3vw;
+    background-color: #E0E0E0;
+    color: white;
+    border: 0px;
+    border-radius: 5px;
+    font-size: large;
 }
 
 #image {
@@ -74,10 +120,33 @@ footer{
     line-height: 10vh;
 }
 
+.quiz {
+    font-family: 'Nanum Pen Script', cursive;
+    font-size: 3rem;
+}
+.answer {
+    border-radius: 10px;
+    text-align: center;
+    margin-top: 5vh;
+}
+
 @media screen and (max-width: 576px) {
     .jieurring{
         width: 80%;
         height: 50vh;
+    }
+
+    .O{
+        width: 30%;
+    }
+    .X{
+        width: 30%;
+    }
+    .answer{
+        width: 30vw;
+    }
+    .logOut{
+        margin-left: 5vw;
     }
 }
 
